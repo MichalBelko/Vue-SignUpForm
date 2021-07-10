@@ -2,7 +2,7 @@
 
 ## Project done by Michal Belko
 
-Used technologies : Html , CSS, Js , Vue , Babel
+Used technologies : Html , CSS, Js , Vue , Babel, GSAP, Bootstrap
 
 ### Customize configuration
 
