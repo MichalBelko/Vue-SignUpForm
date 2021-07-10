@@ -1,19 +1,13 @@
-# web-forms
+# A small Vue Sign-up form project with animated background
 
-## Project setup
-```
-npm install
-```
+## Project done by Michal Belko
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
+Used technologies : Html , CSS, Js , Vue , Babel
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+```
+
+```
