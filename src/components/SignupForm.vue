@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit" class="form-control">
-    <h1>Create an Acount</h1>
+    <h1>Create an Account</h1>
     <label>
       Email:
     </label>
@@ -24,7 +24,7 @@
     <label>Skills:</label>
     <input
       type="text"
-      placeholder="Write and press Alt"
+      placeholder="Write and press Enter, delete by clicking"
       v-model="tempSkill"
       @keyup="addSkill"
       class="skills"
@@ -60,8 +60,8 @@
     </div> -->
 
     <div class="submit">
-      <button class="ripple">
-        Sign Up
+      <button class="button fill">
+        <span>Sign Up</span>
       </button>
     </div>
   </form>
@@ -73,7 +73,7 @@ export default {
     return {
       email: "@gmail.com",
       password: "",
-      role: "developer",
+      role: "Designer",
       terms: false,
       //   names: [],
       tempSkill: "",
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     addSkill(e) {
-      if (e.key === "Alt" && this.tempSkill) {
+      if (e.key === "Enter" && this.tempSkill) {
         if (!this.skills.includes(this.tempSkill)) {
           this.skills.push(this.tempSkill);
           this.tempSkill = "";
@@ -168,7 +168,7 @@ input[type="checkbox"] {
   top: 3px;
 }
 .pill {
-  background-color: #60bfff;
+  background-color: rgb(255, 70, 83);
   border-radius: 10px;
   color: #000;
   display: inline-block;
@@ -179,57 +179,44 @@ input[type="checkbox"] {
   text-transform: uppercase;
 }
 
-/* button {
-  background-color: #0000ff;
+.button {
+  --light: #fff;
+  --dark: #414856;
+  --border: #c3c8de;
+  --background: #b61924;
+
+  display: block;
+  margin: 20px auto;
+  margin-top: 30px;
+  position: relative;
   border: 0;
-  padding: 10px 20px;
-  color: white;
+  padding: 0 30px;
+  width: 150px;
+  height: 60px;
   border-radius: 5px;
-  margin-top: 35px;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 1px;
-} */
-.submit {
-  text-align: center;
-}
-button.ripple {
-  background-color: #0000ff;
+  border: 1px solid var(--border);
+  background: none;
   color: #fff;
-  border: none;
-  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 10px 50px rgba(65, 72, 86, 0.2);
+  transition: transform 0.1s linear, color 0.1s linear, background 0.15s linear;
+}
+.button > span {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  font: 400 15px "Varela Round", sans-serif;
+  transition: transform 0.15s linear;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 20px 30px;
-  overflow: hidden;
-  margin: 0px auto;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  display: block;
-  position: relative;
-  cursor: pointer;
-  border-radius: 5px;
 }
-
-button:focus {
-  outline: none;
-  border: none;
+.button.fill {
+  border: 0;
+  color: var(--light);
+  background: var(--background);
 }
-
-button .circle {
-  position: absolute;
-  background-color: #fff;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  animation: scale 0.5s ease-out;
-}
-
-@keyframes scale {
-  to {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0;
-  }
+.submit {
+  text-align: center;
 }
 </style>

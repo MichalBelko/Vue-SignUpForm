@@ -19,19 +19,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   max-width: 500px;
+  display: block;
+  margin: 0 auto;
 }
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   background-color: #eee;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 /* ---- reset ---- */
 canvas {
@@ -40,43 +42,14 @@ canvas {
 } /* ---- particles.js container ---- */
 #particles-js {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   background-color: #b61924;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-} /* ---- stats.js ---- */
-.count-particles {
-  background: #000022;
-  position: absolute;
-  top: 48px;
-  left: 0;
-  width: 80px;
-  color: #13e8e9;
-  font-size: 0.8em;
-  text-align: left;
-  text-indent: 4px;
-  line-height: 14px;
-  padding-bottom: 2px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-.js-count-particles {
-  font-size: 1.1em;
-}
-#stats,
-.count-particles {
-  -webkit-user-select: none;
-  margin-top: 5px;
-  margin-left: 5px;
-}
-#stats {
-  border-radius: 3px 3px 0 0;
-  overflow: hidden;
-}
-.count-particles {
-  border-radius: 0 0 3px 3px;
 }
 </style>

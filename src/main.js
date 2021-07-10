@@ -3,7 +3,38 @@ import App from "./App.vue";
 
 createApp(App).mount("#app");
 
-const buttons = document.querySelectorAll(".ripple");
+window.addEventListener("keydown", function(event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+    return false;
+  }
+});
+
+// / --- BUTTON
+const $ = (s, o = document) => o.querySelector(s);
+const $$ = (s, o = document) => o.querySelectorAll(s);
+
+$$(".button").forEach((el) =>
+  el.addEventListener("mousemove", function(e) {
+    const pos = this.getBoundingClientRect();
+    const mx = e.clientX - pos.left - pos.width / 2;
+    const my = e.clientY - pos.top - pos.height / 2;
+
+    this.style.transform = "translate(" + mx * 0.15 + "px, " + my * 0.3 + "px)";
+    this.style.transform +=
+      "rotate3d(" + mx * -0.1 + ", " + my * -0.3 + ", 0, 12deg)";
+    this.children[0].style.transform =
+      "translate(" + mx * 0.025 + "px, " + my * 0.075 + "px)";
+  })
+);
+
+$$(".button").forEach((el) =>
+  el.addEventListener("mouseleave", function() {
+    this.style.transform = "translate3d(0px, 0px, 0px)";
+    this.style.transform += "rotate3d(0, 0, 0, 0deg)";
+    this.children[0].style.transform = "translate3d(0px, 0px, 0px)";
+  })
+);
 
 particlesJS("particles-js", {
   particles: {
@@ -59,43 +90,4 @@ particlesJS("particles-js", {
     },
   },
   retina_detect: true,
-});
-var count_particles, stats, update;
-stats = new Stats();
-stats.setMode(0);
-stats.domElement.style.position = "absolute";
-stats.domElement.style.left = "0px";
-stats.domElement.style.top = "0px";
-document.body.appendChild(stats.domElement);
-count_particles = document.querySelector(".js-count-particles");
-update = function() {
-  stats.begin();
-  stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
-
-buttons.forEach((button) => {
-  button.addEventListener("click", function(e) {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    const buttonTop = e.target.offsetTop;
-    const buttonLeft = e.target.offsetLeft;
-
-    const xInside = x - buttonLeft;
-    const yInside = y - buttonTop;
-
-    const circle = document.createElement("span");
-    circle.classList.add("circle");
-    circle.style.top = yInside + "px";
-    circle.style.left = xInside + "px";
-
-    this.appendChild(circle);
-
-    setTimeout(() => circle.remove(), 500);
-  });
 });
